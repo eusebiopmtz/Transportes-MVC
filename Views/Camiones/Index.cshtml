@@ -1,0 +1,58 @@
+﻿
+@model List<Transportes_MVC.Models.DTO_VewModels.CamionesLista>
+
+@{
+//ViewBag.Title = "Lista de Camiones";
+}
+
+<h2>@ViewBag.Title</h2>
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-md-12" style="text-align:right;">
+        <a href="~/Camiones/Nuevo_Camion" class="btn btn-primary">Nuevo Camion<i class="fa-sharp fa-solid fa-plus" style="color: #ffffff;"></i></a>
+    </div>
+</div>
+
+<div  class="row">
+    <div class="col-md-12">
+        <table class="table-striped table-bordered table-bordered table-responsive">
+            <tr>
+                <th>ID_Camion</th>
+                <th>matricula</th>
+                <th>tipo_camion</th>
+                <th>marca</th>
+                <th>modelo</th>
+                <th>capacidad</th>
+                <th>kilometraje</th>
+                <th>urlfoto</th>
+                <th>disponibilidad</th>
+                <th>chofer_id</th>
+
+                @foreach(var Elemento in Model)
+            {
+                <tr>
+                    <td>@Elemento.ID_Camion</td>
+                    <td>@Elemento.matricula</td>
+                    <th>@Elemento.tipo_camion</th>
+                    <td>@Elemento.marca</td>
+                    <td>@Elemento.modelo</td>
+                    <td>@Elemento.capacidad</td>
+                    <td>@Elemento.kilometraje</td>
+                    <td>
+                        <img src="@Elemento.urlfoto" alt="imagen de camion" /></td>
+                    <td style="text-align:center;">
+                    <input type="checkbox" disabled="disabled" @(Elemento.disponibilidad ?"checked" :"")/></td>
+                    <td>@Elemento.chofer_id</td>
+
+                    <td>
+                        <a class="btn btn-warning" href="~/Camiones/Editar_Camion/@Elemento.ID_Camion"><i class="fa-regular fa-pen-to-square" style="color:#ffffff;"></i></a>
+                        <a class="btn btn-danger" href="~/Camiones/Eliminar_Camion/@Elemento.ID_Camion"><i class="fa-solid fa-trash" style="color:#ffffff;"</a>
+                    </td>
+                </tr>
+            }
+            
+        </table>
+    </div>
+</div>
+

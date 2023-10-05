@@ -1,0 +1,57 @@
+﻿@model List<Transportes_MVC.Models.DTO_VewModels.Camiones_ChoferesList>
+
+
+@*<h2>CamionesVista</h2>*@
+<h2>@ViewBag.titulo</h2>
+@*<h2>@ViewData["Title"]</h2>*@
+<div class="row">
+    <div class="col-md-12" style="text-align:right;">
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table-striped table-bordered table-bordered table-responsive">
+            <tr>
+                <th>ID_Camion</th>
+                <th>Matricula</th>
+                <th>Tipo_camion</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Capacidad</th>
+                <th>Kilometraje</th>
+                <th>Urlfoto</th>
+                <th>Disponibilidad</th>
+                <th>Chofer_id</th>
+                <th>Nombre Chofer</th>
+
+                @foreach (var Elemento in Model)
+                {
+                <tr>
+                    <td>@Elemento.ID_Camion</td>
+                    <td>@Elemento.matricula</td>
+                    <th>@Elemento.tipo_camion</th>
+                    <td>@Elemento.marca</td>
+                    <td>@Elemento.modelo</td>
+                    <td>@Elemento.capacidad</td>
+                    <td>@Elemento.kilometraje</td>
+                    <td>
+                        <img src="@Elemento.urlfoto" alt="imagen de camion" />
+                    </td>
+                    <td style="text-align:center;">
+                        <input type="checkbox" disabled="disabled" @(Elemento.disponibilidad ? "checked" : "") />
+                    </td>
+                    <td>@Elemento.chofer_id</td>
+                    <td>@Elemento.Nombre_Chofer</td>
+
+                    <td>
+                        <a class="btn btn-warning" href=""><i class="fa-regular fa-pen-to-square" style="color:#ffffff;"></i></a>
+                        <a class="btn btn-danger" href=""><i class="fa-solid fa-trash" style="color:#ffffff;"</a>
+                    </td>
+                </tr>
+            }
+
+            </table>
+        </div>
+    </div>
